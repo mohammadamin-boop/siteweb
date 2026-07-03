@@ -1,0 +1,12 @@
+
+[
+  {
+    "name": "ARDCENTER Platform | Agriculture Multitask Platform",
+    "image": "assets/images/ard.png",
+    "description": "A web platform that contains everything related to agriculture, a marketplace, a chatbot and a experts contacting services",
+    "tech": ["HTML", "CSS", "JavaScript", "Node.js"],
+    "live": "https://marketplace-ardcenter.vercel.app/"
+  }
+
+]
+

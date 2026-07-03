@@ -1,0 +1,162 @@
+// Load skills
+const skillIcons = {
+  "Node.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+  "JavaScript": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+  "HTML": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+  "CSS": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+  "Java": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+  "Python": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
+  "SQL": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+  "Object-Oriented Programming": "https://img.icons8.com/ios-filled/50/code.png",
+  "Operating Systems": "https://img.icons8.com/ios-filled/50/windows-10.png",
+  "Database Management Systems": "https://img.icons8.com/ios-filled/50/database.png",
+  "Computer Networks": "https://img.icons8.com/ios-filled/50/network.png",
+  "Git": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+    "GitHub": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+  "VS Code": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
+  "Generative AI": "https://img.icons8.com/fluency/96/artificial-intelligence.png",
+  "Cyber Security": "https://img.icons8.com/?size=100&id=0tpqgxISselU&format=png&color=000000"
+};
+
+fetch("data/skills.json")
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById("skills-container");
+    container.innerHTML = "";
+
+    Object.entries(data).forEach(([category, skills]) => {
+      const section = document.createElement("div");
+      section.className = "skills-category";
+      section.dataset.category = category;
+      section.innerHTML = `
+        <h3 class="skills-category-title">${category}</h3>
+        <div class="skills-grid"></div>
+      `;
+
+      const grid = section.querySelector(".skills-grid");
+
+      skills.forEach(skill => {
+        const card = document.createElement("div");
+        card.className = "skill-card";
+        card.innerHTML = `
+          <div class="skill-card-content">
+            <img src="${skillIcons[skill.name] || ''}" alt="${skill.name}">
+            <h3>${skill.name}</h3>
+            <span class="skill-level">${skill.level}</span>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      container.appendChild(section);
+    });
+  })
+  .catch(() => {
+    document.getElementById("skills-container").innerHTML = "<p>Could not load skills.</p>";
+  });
+
+// Skill tab filter
+document.addEventListener("click", function(e) {
+  if (e.target.classList.contains("skill-tab")) {
+    document.querySelectorAll(".skill-tab").forEach(tab => tab.classList.remove("active"));
+    e.target.classList.add("active");
+
+    const category = e.target.dataset.category;
+    document.querySelectorAll(".skills-category").forEach(section => {
+      section.style.display = (category === "all" || section.dataset.category === category) ? "block" : "none";
+    });
+  }
+});
+
+// Load projects
+fetch("data/projects.json")
+  .then(res => res.json())
+  .then(data => {
+    const c = document.getElementById("projects-container");
+    c.innerHTML = "";
+    data.forEach(p => {
+      const d = document.createElement("div");
+      d.className = "project-card";
+      const techTags = (p.tech || []).map(t => `<span class="tech-tag">${t}</span>`).join("");
+      d.innerHTML = `
+        <div class="project-thumb">
+          <img src="${p.image}" alt="${p.name}" onerror="this.parentElement.style.background='#1e3a5f'; this.style.display='none'">
+        </div>
+        <div class="project-info">
+          <h3>${p.name}</h3>
+          <p>${p.description || ""}</p>
+          <div class="tech-tags">${techTags}</div>
+          <div class="project-links">
+            <a href="${p.live}" target="_blank">Live ↗</a>
+            
+          </div>
+        </div>
+      `;
+      c.appendChild(d);
+    });
+  })
+  .catch(() => {
+    document.getElementById("projects-container").innerHTML = "<p>Could not load projects.</p>";
+  });
+
+// Load certifications — FIXED (was using wrong variable name before)
+fetch("data/certifications.json")
+  .then(res => res.json())
+  .then(data => {
+    const c = document.getElementById("certifications-container");
+    c.innerHTML = "";
+    data.forEach(p => {
+      const d = document.createElement("div");
+      d.className = "certifications-card";
+      const skillsTags = (p.skills || []).map(t => `<span class="skills-tag">${t}</span>`).join("");
+      d.innerHTML = `
+        <div class="certifications-thumb">
+          <img src="${p.image}" alt="${p.name}" onerror="this.parentElement.style.background='#1e3a5f'; this.style.display='none'">
+        </div>
+        <div class="certifications-info">
+          <h3>${p.name}</h3>
+          <p>${p.description || ""}</p>
+          <div class="skills-tags">${skillsTags}</div>
+        </div>
+      `;
+      c.appendChild(d);
+    });
+  })
+  .catch(() => {
+    document.getElementById("certifications-container").innerHTML = "<p>Could not load certifications.</p>";
+  });
+
+// ── EMAILJS ──
+(function () {
+  emailjs.init("kqnCcPYqtdwl_Oaqt");
+})();
+
+document.getElementById("contact-form").addEventListener("submit", function (e) {
+  e.preventDefault();
+  const btn = this.querySelector("button");
+  btn.textContent = "Sending...";
+  btn.disabled = true;
+
+  emailjs.sendForm("service_08nkbcb", "template_2yrnipb", this)
+    .then(() => {
+      alert("Message sent successfully!");
+      this.reset();
+      btn.textContent = "Send Message";
+      btn.disabled = false;
+    }, () => {
+      alert("Failed to send. Please try again.");
+      btn.textContent = "Send Message";
+      btn.disabled = false;
+    });
+});
+
+// ── SCROLL TO TOP BUTTON ──
+const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+window.addEventListener("scroll", () => {
+  scrollTopBtn.classList.toggle("show", window.scrollY > 300);
+});
+
+scrollTopBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});

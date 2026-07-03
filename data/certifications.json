@@ -1,0 +1,35 @@
+
+[
+  {
+    "name": "DELF Certificate",
+    "image": "assets/images/delf.png",
+    "description": "Successfully earned the DELF B2 certification, demonstrating an upper-intermediate proficiency in French. This certification reflects strong communication skills in speaking, listening, reading, and writing, as well as the ability to use French effectively in academic and professional contexts.",
+    "skills": [
+  "French Writing",
+  "French Speaking",
+  "Professional Communication",
+  "Public Speaking",
+  "Confidence Building",
+  "Active Listening"
+]
+  },
+
+  {
+    "name": "Spoken English and Communication",
+    "image": "assets/images/ardcertf.jpeg",
+    "description": "Participated in the INJAZ Al-Maghrib entrepreneurship competition as part of a team, where we developed ARDCenter, an innovative platform designed to support the agricultural sector. The platform featured an AI-powered assistant for agricultural guidance, a marketplace connecting buyers and sellers of agricultural products, and a service that enabled farmers to connect with agricultural experts. This experience strengthened my teamwork, problem-solving, and project development skills while applying technology to address real-world challenges. Our team successfully completed the competition and was awarded a certificate of participation.",
+    "skills": [
+  "Team Collaboration",
+  "Problem Solving",
+  "Time Management",
+  "Project Management",
+  "Presentation and Public Speaking",
+  "Critical Thinking",
+  "PInnovation"
+]
+  }
+
+  
+
+]
+

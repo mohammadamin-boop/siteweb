@@ -1,0 +1,89 @@
+{
+  "Frontend": [
+    {
+      "name": "HTML",
+      "level": "Intermediate"
+    },
+    {
+      "name": "CSS",
+      "level": "Intermediate"
+    },
+    {
+      "name": "JavaScript",
+      "level": "Above Beginner"
+    }
+  ],
+
+  "Backend": [
+    {
+      "name": "Node.js",
+      "level": "Beginner"
+    },
+    {
+      "name": "Python",
+      "level": "Intermediate"
+    },
+    {
+      "name": "SQL",
+      "level": "Intermediate"
+    }
+  ],
+
+  "Programming Languages": [
+
+    {
+      "name": "JavaScript",
+      "level": "Above Beginner"
+
+    },
+    {
+      "name": "Python",
+      "level": "Intermediate"
+    }
+  ],
+
+  "Core Computer Science": [
+    {
+      "name": "Operating Systems",
+      "level": "Intermediate"
+    },
+    {
+      "name": "Database Management Systems",
+      "level": "Intermediate"
+    },
+    {
+      "name": "Computer Networks",
+      "level": "Intermediate"
+    },
+    {
+      "name": "Object-Oriented Programming",
+      "level": "Intermediate"
+    }
+  ],
+
+  "Tools & Platforms": [
+    {
+      "name": "Git",
+      "level": "Intermediate"
+    },
+    {
+      "name": "GitHub",
+      "level": "Intermediate"
+    },
+    {
+      "name": "VS Code",
+      "level": "Intermediate"
+    }
+  ],
+
+  "Currently Learning": [
+     {
+    "name": "Generative AI",
+      "level": "Beginner"
+    },
+    {
+      "name": "Cyber Security",
+      "level": "Beginner"
+    }
+  ]
+}
